@@ -28,6 +28,11 @@
             hashTable.Add("Gosho", "Gecata");
             hashTable.Add("Kencho", "I.K.");
 
+            for (int i = 0; i < 110; i++)
+            {
+                hashTable.Add(i.ToString(), i.ToString());
+            }
+
             // Find
             Console.WriteLine(hashTable.Find("Pesho"));
             Console.WriteLine(hashTable.Find("Gosho"));

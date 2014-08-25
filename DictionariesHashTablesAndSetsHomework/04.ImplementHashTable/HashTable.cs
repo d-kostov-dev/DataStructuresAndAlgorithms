@@ -9,8 +9,13 @@
         private int currentUsedSize;
 
         public HashTable()
+            : this(16)
         {
-            this.itemsList = new LinkedList<KeyValueStruct<K, V>>[16];
+        }
+
+        public HashTable(int size)
+        {
+            this.itemsList = new LinkedList<KeyValueStruct<K, V>>[size];
             this.currentUsedSize = 0;
         }
 
@@ -119,14 +124,22 @@
 
             if (this.currentUsedSize >= percentFromTotal)
             {
-                var newList = new LinkedList<KeyValueStruct<K, V>>[this.itemsList.Length * 2];
+                var newHashTable = new HashTable<K, V>(this.itemsList.Length * 2);
 
                 for (int i = 0; i < this.itemsList.Length; i++)
                 {
-                    newList[i] = this.itemsList[i];
+                    var currentList = this.itemsList[i];
+
+                    if (currentList != null)
+                    {
+                        foreach (var item in this.itemsList[i])
+                        {
+                            newHashTable.Add(item.Key, item.Value);
+                        }
+                    }
                 }
 
-                this.itemsList = newList;
+                this.itemsList = newHashTable.itemsList;
             }
         }
 

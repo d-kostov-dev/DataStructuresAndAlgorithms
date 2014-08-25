@@ -22,7 +22,12 @@
         public void Add(T item)
         {
             int itemKey = item.GetHashCode();
-            this.hashTable.Add(itemKey, item);
+            var foundItem = this.hashTable.Find(itemKey);
+
+            if (foundItem == null)
+            {
+                this.hashTable.Add(itemKey, item);
+            }
         }
 
         public T Find(T item)
