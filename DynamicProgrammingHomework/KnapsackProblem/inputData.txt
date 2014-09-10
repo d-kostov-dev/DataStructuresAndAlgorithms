@@ -1,0 +1,8 @@
+10
+6
+beer 3 2
+vodka 8 12
+cheese 4 5
+nuts 1 4
+ham 2 3
+whiskey 8 13
